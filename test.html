@@ -1,32 +1,30 @@
 <!doctype html>
 <head>
 <script>
-  function set(){
-  let input = document.querySelector('input');
-
-
-  input.setAttribute("value", "abc"); 
-  input.value = "def0";   
-  input.value = "def1"; 
-  for (let index = 0; index < 5000; index++) {
-    console.log("1"); 
-    if (index % 1000 == 0) {
-      alert("5000");
-    }
-  }
-  input.value = "def2"; 
-  input.value = "def3"; 
-  input.value = "def4"; 
-  //alert(input.outerHTML);
-  //console.log("1");
-
+  function go(bt){
+    item = document.querySelector(".order");
+    item.dataset.orderState = bt.value;
   }
   
 </script>
+<style>
+  .order[data-order-state="new"]{
+    background-color: chartreuse;
+  }
+  .order[data-order-state="pendding"]{
+    background-color: chocolate;
+  }
+  .order[data-order-state="canceled"]{
+    background-color: darkgoldenrod;
+  }
+</style>
 </head>
 <body>
-<input type="text">
-<input type="button" onclick="set()" value="click"/>
+<input type="button" onclick="go(this)" value="new"/>
+<input type="button" onclick="go(this)" value="pendding"/>
+<input type="button" onclick="go(this)" value="canceled"/>
+
+<p class=order data-order-state="new">Pen</p>
 
 
 </body>
